@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="todo-list">
+      <div class="input-group">
+        <input type="text" placeholder="Todo" #newTask>
+        <button class="add-button" (click)="add(newTask.value)" >+</button>
+        <button class="done-button" (click)="newTask.value = ' '">Clear</button>
+      </div>
+      <table>
+  
+        <tr *ngFor="let task of tasks; let i = index" [class.odd]="i%2==0" [class.even]="i%2==1">
+          <td>
+            <p [class.is-done]="task.isDone" class="td">
+              {{task.title}}        
+            </p>
+          </td>  
+          <td>
+            <button (click)="task.toggleIsDone()" class="done-button">
+              {{task.isDone ? "Undo" : "Done"}}
+            </button>
+            <button (click)="remove(task)" class="remove-button">X</button>
+          </td> 
+        </tr>  
+  
+      </table>
+    </div>
+  </div>
